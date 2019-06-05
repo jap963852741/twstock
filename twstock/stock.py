@@ -36,8 +36,9 @@ def get_proxy():
             return response.text
     except ConnectionError:
         return None
-if __name__=='__main__':
-    print(get_proxy())
+
+
+
 class BaseFetcher(object):
     def fetch(self, year, month, sid, retry):
         pass
@@ -57,7 +58,8 @@ class TWSEFetcher(BaseFetcher):
     REPORT_URL = urllib.parse.urljoin(TWSE_BASE_URL, 'exchangeReport/STOCK_DAY')
     # print('REPORT_URL    '+REPORT_URL)
 
-    def __init__(self):
+    def __init__(self,ip):
+        self.ip = ip
         pass
 
     def fetch(self, year: int, month: int, sid: str, retry: int=5):
@@ -66,10 +68,7 @@ class TWSEFetcher(BaseFetcher):
         for retry_i in range(retry):
             proxy = get_proxy()
             print(proxy)
-            if retry_i > 2:
-                proxy = get_proxy()
-                print(proxy)
-            proxies = {"http": "http://"+proxy }
+            proxies = {"http": "http://"+self.ip }
 
             r = requests.get(self.REPORT_URL, params=params,proxies=proxies,headers=headers)
             try:
@@ -156,12 +155,11 @@ class TPEXFetcher(BaseFetcher):
 
 class Stock(analytics.Analytics):
 
-    def __init__(self, sid: str, initial_fetch: bool=True):
+    def __init__(self, ip, sid: str, initial_fetch: bool=True ):
         self.sid = sid
-        self.fetcher = TWSEFetcher() if codes[sid].market == '上市' else TPEXFetcher()
+        self.fetcher = TWSEFetcher(ip) if codes[sid].market == '上市' else TPEXFetcher()
         self.raw_data = []
         self.data = []
-
         # Init data
         if initial_fetch:
             self.fetch_31()

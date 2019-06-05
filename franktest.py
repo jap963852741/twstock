@@ -1,5 +1,7 @@
 from time import sleep
 
+import requests
+
 import twstock
 import os, sys
 import subprocess
@@ -20,6 +22,14 @@ from twstock import Stock, BestFourPoint
 #         return None
 
 # print(get_proxy())
+def get_proxy_all():
+    try:
+        response = requests.get('http://127.0.0.1:5010/get_all')
+        # print(response)
+        if response.status_code == 200:
+            return response.json()
+    except ConnectionError:
+        return None
 
 
 
@@ -96,11 +106,13 @@ buy_sell_point=[]
 
 ######################## 日更新#############################################################
 
-#
+ip_list =get_proxy_all()
+i=0
 for item in twstock.stock_twse.keys():
     # stdout,process = subprocess.Popen("twstock -b {}".format(item), stdout=subprocess.PIPE, stderr=PIPE, stdin=subprocess.PIPE, shell=True).communicate()
     # print(stdout.decode('utf-8'))
-    stock = Stock(item)
+    ip = ip_list[i%len(ip_list)]
+    stock = Stock(ip,item)
     try:
         bfp = BestFourPoint(stock)
         result = bfp.best_four_point()
@@ -115,6 +127,7 @@ for item in twstock.stock_twse.keys():
         buy_sell_point.append(bfp.best_four_point())
     except:
         pass
+    i = i + 1
     # bfp.__del__()
 
     # buy_sell_point.append(stdout.decode('utf-8'))
@@ -130,8 +143,8 @@ googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 
 
 
-
-
+#
+#
 #
 # for item in twstock.stock_twse.keys(): #即時交易量
 #     try:
