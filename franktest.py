@@ -32,6 +32,16 @@ def get_proxy_all():
         return None
 
 
+Point_list = ['1104','1474','2362','2423','2535','2885','3006','3022','3048','4532','5305','6257','8021','8131','1451','2204','2430','2612','2701','2838','5907','8021','1909','2349','2371','2426','2448','2534','3189','3437']
+
+
+
+def delete_proxy(proxy):
+    requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
+
+
+delete_proxy('115.221.234.245:8060')
+delete_proxy('138.201.223.250:31288')
 
 # twstock.__update_codes()
 stocklist = []
@@ -108,7 +118,7 @@ buy_sell_point=[]
 
 ip_list =get_proxy_all()
 i=0
-for item in twstock.stock_twse.keys():
+for item in Point_list:
     # stdout,process = subprocess.Popen("twstock -b {}".format(item), stdout=subprocess.PIPE, stderr=PIPE, stdin=subprocess.PIPE, shell=True).communicate()
     # print(stdout.decode('utf-8'))
     ip = ip_list[i%len(ip_list)]

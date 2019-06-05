@@ -64,12 +64,13 @@ class TWSEFetcher(BaseFetcher):
 
     def fetch(self, year: int, month: int, sid: str, retry: int=5):
         params = {'date': '%d%02d01' % (year, month), 'stockNo': sid}
-        print('params  '+ str(params))
+        # print('params  '+ str(params))
         for retry_i in range(retry):
-            proxy = get_proxy()
-            print(proxy)
-            proxies = {"http": "http://"+self.ip }
+            # proxy = get_proxy()
+            # print(proxy)
 
+            proxies = {"http": "http://"+self.ip }
+            print(proxies)
             r = requests.get(self.REPORT_URL, params=params,proxies=proxies,headers=headers)
             try:
                 data = r.json()
