@@ -32,7 +32,7 @@ def get_proxy_all():
         return None
 
 
-Point_list = ['1104','1474','2362','2423','2535','2885','3006','3022','3048','4532','5305','6257','8021','8131','1451','2204','2430','2612','2701','2838','5907','8021','1909','2349','2371','2426','2448','2534','3189','3437']
+Point_list = ['2014','1605']
 
 
 
@@ -40,9 +40,28 @@ def delete_proxy(proxy):
     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
 
 
-delete_proxy('115.221.234.245:8060')
-delete_proxy('138.201.223.250:31288')
 
+def try_proxy(ip):
+    proxies = {"http": "http://" + ip}
+    try:
+        response = requests.get('https://www.google.com/',proxies=proxies)
+        if response.status_code == 200:
+            print(200)
+            return True
+        else:
+            print(ip+'not 200')
+    except ConnectionError:
+        return None
+
+delete_proxy('181.196.77.70:53281')
+delete_proxy('51.38.71.101:8080')
+delete_proxy('138.201.223.250:31288')
+delete_proxy('159.69.211.173:3128')
+
+delete_proxy('82.114.241.138:8080')
+delete_proxy('42.115.88.71:62225')
+delete_proxy('195.154.207.153:80')
+delete_proxy('115.159.31.195:8080')
 # twstock.__update_codes()
 stocklist = []
 The_Net_Asset_Value = []
@@ -67,10 +86,14 @@ buy_sell_point=[]
 #     EPS.append(i)
 # googlesheet_frank.The_EPSinformation().write(EPS)
 ######################### 年更新#############################################################
-
+#
 # for item in twstock.stock_twse.keys(): #每股淨值寫入
-#     i = item+" "+crawler_yahoostock.get_The_Net_Asset_Value(item)
+#     try:
+#         i = item+" "+crawler_yahoostock.get_The_Net_Asset_Value(item)
+#     except:
+#         i = item
 #     The_Net_Asset_Value.append(i)
+#     print(i)
 # googlesheet_frank.The_Net_Asset_Valueinformation().write(The_Net_Asset_Value)
 
 ######################## 年更新#############################################################
@@ -123,18 +146,28 @@ for item in Point_list:
     # print(stdout.decode('utf-8'))
     ip = ip_list[i%len(ip_list)]
     stock = Stock(ip,item)
+
+    if try_proxy(ip) :
+        pass
+    else:
+        i=i+1
+        ip = ip_list[i % len(ip_list)]
+
     try:
         bfp = BestFourPoint(stock)
         result = bfp.best_four_point()
         # print(bfp.best_four_point())
-        if result[0] == 'True' :  # 判斷是否為四大買點
-            print(item+',buy'+result[1])
-        else :        # print(bfp.best_four_point()[1])
-            print(item+',sell'+result[1])
 
-        bfp.best_four_point_to_sell()  # 判斷是否為四大賣點
-        bfp.best_four_point()
-        buy_sell_point.append(bfp.best_four_point())
+        if result[1] == bfp.best_four_point_to_buy() :  # 判斷是否為四大買點
+            print(item+',buy'+result[1])
+            buy_sell_point.append(item+',buy'+result[1])
+        elif result[1] == bfp.best_four_point_to_sell() :        # print(bfp.best_four_point()[1])
+            print(item+',sell'+result[1])
+            buy_sell_point.append(item+',sell'+result[1])
+
+        # bfp.best_four_point_to_sell()  # 判斷是否為四大賣點
+        # bfp.best_four_point()
+
     except:
         pass
     i = i + 1
@@ -153,29 +186,29 @@ googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 
 
 
-#
-#
-#
-# for item in twstock.stock_twse.keys(): #即時交易量
-#     try:
-#         i = crawler_yahoostock.get_Now_Tradin_volume(item)
-#     except:
-#         i = item
-#     print(i)
-#     Now_Tradin_volume.append(i)
-# googlesheet_frank.The_Now_Tradin_volume_information().write(Now_Tradin_volume)
-#
-#
-#
-# for item in twstock.stock_twse.keys(): #交易量
-#     try:
-#         i = crawler_yahoostock.get_Tradin_volume(item)
-#     except:
-#         i = item
-#     print(i)
-#     Tradin_volume.append(i)
-# googlesheet_frank.The_Tradin_volume_information().write(Tradin_volume)
-#
+
+
+
+for item in twstock.stock_twse.keys(): #即時交易量
+    try:
+        i = crawler_yahoostock.get_Now_Tradin_volume(item)
+    except:
+        i = item
+    print(i)
+    Now_Tradin_volume.append(i)
+googlesheet_frank.The_Now_Tradin_volume_information().write(Now_Tradin_volume)
+
+
+
+for item in twstock.stock_twse.keys(): #交易量
+    try:
+        i = crawler_yahoostock.get_Tradin_volume(item)
+    except:
+        i = item
+    print(i)
+    Tradin_volume.append(i)
+googlesheet_frank.The_Tradin_volume_information().write(Tradin_volume)
+
 #
 #
 #
