@@ -32,7 +32,7 @@ def get_proxy_all():
         return None
 
 
-Point_list = ['2014','1605']
+Point_list = ['1605','1314','2610','2014']
 
 
 
@@ -52,16 +52,11 @@ def try_proxy(ip):
             print(ip+'not 200')
     except ConnectionError:
         return None
+delete_proxy('212.64.51.13:8888')
+delete_proxy('144.123.71.195:9999')
+delete_proxy('112.247.181.208:8060')
+delete_proxy('94.130.20.85:31288')
 
-delete_proxy('181.196.77.70:53281')
-delete_proxy('51.38.71.101:8080')
-delete_proxy('138.201.223.250:31288')
-delete_proxy('159.69.211.173:3128')
-
-delete_proxy('82.114.241.138:8080')
-delete_proxy('42.115.88.71:62225')
-delete_proxy('195.154.207.153:80')
-delete_proxy('115.159.31.195:8080')
 # twstock.__update_codes()
 stocklist = []
 The_Net_Asset_Value = []
@@ -140,18 +135,20 @@ buy_sell_point=[]
 ######################## 日更新#############################################################
 
 ip_list =get_proxy_all()
+print(ip_list)
 i=0
 for item in Point_list:
     # stdout,process = subprocess.Popen("twstock -b {}".format(item), stdout=subprocess.PIPE, stderr=PIPE, stdin=subprocess.PIPE, shell=True).communicate()
     # print(stdout.decode('utf-8'))
+
     ip = ip_list[i%len(ip_list)]
     stock = Stock(ip,item)
 
-    if try_proxy(ip) :
-        pass
-    else:
-        i=i+1
-        ip = ip_list[i % len(ip_list)]
+    # if try_proxy(ip) :
+    #     pass
+    # else:
+    #     i=i+1
+    #     ip = ip_list[i % len(ip_list)]
 
     try:
         bfp = BestFourPoint(stock)
@@ -180,10 +177,13 @@ googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 
 
 
+###除權息日 日更
+Ex_dividends_days = crawler_yahoostock.get_Ex_Dividends()
+googlesheet_frank.Ex_Dividends_information().write(Ex_dividends_days)
 
-
-
-
+Buy_Sell_exceed=crawler_yahoostock.get_Buy_Sell_exceed()
+# print(Buy_Sell_exceed)
+googlesheet_frank.Buy_Sell_exceed_information().write(Buy_Sell_exceed)
 
 
 
@@ -192,7 +192,8 @@ googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 for item in twstock.stock_twse.keys(): #即時交易量
     try:
         i = crawler_yahoostock.get_Now_Tradin_volume(item)
-    except:
+    except Exception:
+        print(Exception)
         i = item
     print(i)
     Now_Tradin_volume.append(i)

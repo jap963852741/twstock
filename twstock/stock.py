@@ -71,7 +71,7 @@ class TWSEFetcher(BaseFetcher):
 
             proxies = {"http": "http://"+self.ip }
             print(proxies)
-            r = requests.get(self.REPORT_URL, params=params,proxies=proxies,headers=headers)
+            r = requests.get(self.REPORT_URL, params=params,proxies=proxies,headers=headers,verify=False)
             try:
                 data = r.json()
                 print('data '+str(data))

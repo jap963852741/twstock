@@ -150,8 +150,21 @@ class The_Now_Tradin_volume_information(Googleinformation):
     def __init__(self,spreadsheetId = '1l156Q4E_HxpebTuzVFQk0MI1vayKFCwW_tTJSWxFjXg',rangeName = '即時交易量!A2:E'):
         self.spreadsheetId = spreadsheetId
         self.rangeName = rangeName
+
+class Regression_Price_information(Googleinformation):
+    def __init__(self,spreadsheetId = '1l156Q4E_HxpebTuzVFQk0MI1vayKFCwW_tTJSWxFjXg',rangeName = '回歸預測!A2:E'):
+        self.spreadsheetId = spreadsheetId
+        self.rangeName = rangeName
+class Ex_Dividends_information(Googleinformation):
+    def __init__(self,spreadsheetId = '1l156Q4E_HxpebTuzVFQk0MI1vayKFCwW_tTJSWxFjXg',rangeName = '除權息日期股利!A2:E'):
+        self.spreadsheetId = spreadsheetId
+        self.rangeName = rangeName
+class Buy_Sell_exceed_information(Googleinformation):
+    def __init__(self,spreadsheetId = '1l156Q4E_HxpebTuzVFQk0MI1vayKFCwW_tTJSWxFjXg',rangeName = '買賣超!A2:E'):
+        self.spreadsheetId = spreadsheetId
+        self.rangeName = rangeName
 if __name__=='__main__':
-    A = The_Now_Tradin_volume_information()
+    A = Buy_Sell_exceed_information()
     List = [1,2,3]
     # print(A.get_SOP_Noteinformation())
     note = A.write(List)

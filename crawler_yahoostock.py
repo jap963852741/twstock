@@ -1,6 +1,7 @@
 import requests
 import http.cookiejar as cookielib
 from bs4 import BeautifulSoup
+from pandas.core.dtypes.inference import is_number
 
 mafengwoSession = requests.session()
 mafengwoSession.cookies = cookielib.LWPCookieJar(filename="mafengwoCookies.txt")
@@ -101,7 +102,7 @@ def get_Dividend_Payout_Ratio(stock_code):
 
 
 def get_Tradin_volume(stock_code):
-    resp = mafengwoSession.get("https://www.cnyes.com/twstock/ps_historyprice/"+stock_code+'.html', headers=header,
+    resp = mafengwoSession.get("http://www.cnyes.com/twstock/ps_historyprice/"+stock_code+'.html', headers=header,
                                allow_redirects=False)
     Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
     volume = stock_code
@@ -117,9 +118,10 @@ def get_Tradin_volume(stock_code):
     return volume
 
 def get_Now_Tradin_volume(stock_code):
-    resp = mafengwoSession.get("https://m.cnyes.com/twstock/profile.aspx?code="+stock_code, headers=header,
+    resp = mafengwoSession.get("https://m.cnyes.com/twstock/profile.aspx?code="+stock_code, verify=False, #headers=header,
                                allow_redirects=False)
     Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
+
     for idx, tr in enumerate(Soup.find_all('tr')):
         tds = tr.find_all('td')
         try:
@@ -130,7 +132,46 @@ def get_Now_Tradin_volume(stock_code):
     # print(ROE)
 
 
-if __name__=='__main__':
-    a = get_Now_Tradin_volume('1101')
+def get_Ex_Dividends():
+    Result = []
+    resp = mafengwoSession.get("https://histock.tw/stock/dividend.aspx", verify=False, headers=header,
+                               allow_redirects=False)
+    Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
 
+    for idx, tr in enumerate(Soup.find_all('tr')):
+        tds = tr.find_all('td')
+        # print(tds)
+        try:
+           Result.append(tds[1].contents[0]+','+tds[0].contents[0]+','+tds[7].contents[0])
+           # print()
+            # return  tds[0].contents[0]
+        except:
+            pass
+    # print(ROE)
+    # print(Result)
+    return Result
+def get_Buy_Sell_exceed():
+    Result = []
+    resp = mafengwoSession.get("https://stock.wearn.com/d50.asp", verify=False, headers=header,
+                               allow_redirects=False)
+    Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
+
+    for idx, tr in enumerate(Soup.find_all('tr')):
+        tds = tr.find_all('td')
+        # print(tds)
+
+        try:
+           # print(is_number(int(tds[1].contents[0])))
+           # print(tds[1].contents[0]+','+tds[-1].contents[0])
+           Result.append(str(int(tds[1].contents[0]))+'&'+str(int(tds[-1].contents[0])))
+            # return  tds[0].contents[0]
+        except:
+            pass
+    # print(ROE)
+    # print(Result)
+    return Result
+if __name__=='__main__':
+    a = get_Buy_Sell_exceed()
+    print(a)
+    # print(a)
     # print(a)
