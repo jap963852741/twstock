@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="543e3fd9-5218-4344-8a31-755d62ffaf6f" name="Default Changelist" comment="add proxypool">
+    <list default="true" id="543e3fd9-5218-4344-8a31-755d62ffaf6f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Regression_Price.py" beforeDir="false" afterPath="$PROJECT_DIR$/Regression_Price.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler_yahoostock.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler_yahoostock.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/franktest.py" beforeDir="false" afterPath="$PROJECT_DIR$/franktest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/googlesheet_frank.py" beforeDir="false" afterPath="$PROJECT_DIR$/googlesheet_frank.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/twstock/stock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="73" column="91" selection-start-line="73" selection-start-column="91" selection-end-line="73" selection-end-column="91" />
+            <state relative-caret-position="1254">
+              <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/franktest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="144" selection-start-line="144" selection-end-line="144" />
+            <state relative-caret-position="323">
+              <caret line="204" column="54" selection-start-line="204" selection-start-column="54" selection-end-line="204" selection-end-column="54" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -38,19 +36,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/adapters.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3105">
-              <caret line="513" selection-start-line="513" selection-end-line="513" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler_yahoostock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2869">
-              <caret line="154" column="32" selection-start-line="154" selection-start-column="32" selection-end-line="154" selection-end-column="63" />
+            <state relative-caret-position="291">
+              <caret line="167" column="158" selection-start-line="167" selection-start-column="158" selection-end-line="167" selection-end-column="158" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -61,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Regression_Price.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
+            <state relative-caret-position="570">
               <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -73,8 +62,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/googlesheet_frank.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1425">
-              <caret line="82" column="23" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="23" />
+            <state relative-caret-position="321">
+              <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+              <folding>
+                <element signature="e#820#889#0" />
+                <element signature="e#929#2165#0" />
+                <element signature="e#2194#3333#0" />
+                <element signature="e#3369#4453#0" />
+                <element signature="e#4515#4705#0" />
+                <element signature="e#4755#4947#0" />
+                <element signature="e#5012#5196#0" />
+                <element signature="e#5267#5453#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,15 +144,15 @@
         <option value="$PROJECT_DIR$/proxypool/examples/example.py" />
         <option value="$PROJECT_DIR$/twstock/franktest.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/twstock/stock.py" />
         <option value="$PROJECT_DIR$/Regression_Price.py" />
         <option value="$PROJECT_DIR$/googlesheet_frank.py" />
-        <option value="$PROJECT_DIR$/crawler_yahoostock.py" />
+        <option value="$PROJECT_DIR$/twstock/stock.py" />
         <option value="$PROJECT_DIR$/franktest.py" />
+        <option value="$PROJECT_DIR$/crawler_yahoostock.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="16" />
     <option name="y" value="-10" />
     <option name="width" value="1914" />
@@ -164,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,6 +178,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -428,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560149372208</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="更新">
+      <created>1563526250542</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1563526250542</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -442,14 +448,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22708113" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22181243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.3264642" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49736565" weight="0.3264642" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -533,7 +538,8 @@
     <MESSAGE value="add .gitnore .credentials" />
     <MESSAGE value="add proxypool" />
     <MESSAGE value="加入回歸模型" />
-    <option name="LAST_COMMIT_MESSAGE" value="加入回歸模型" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/twstock/codes/codes.py">
@@ -634,17 +640,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/twstock/codes/twse_equities.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="2217">
           <caret line="839" column="7" selection-start-line="839" selection-start-column="7" selection-end-line="839" selection-end-column="7" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -789,19 +795,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler_yahoostock.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/adapters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2869">
-          <caret line="154" column="32" selection-start-line="154" selection-start-column="32" selection-end-line="154" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="9177">
+          <caret line="513" selection-start-line="513" selection-end-line="513" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twstock/stock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="69" column="26" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Regression_Price.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
+        <state relative-caret-position="570">
           <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -811,32 +821,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/googlesheet_frank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1425">
-          <caret line="82" column="23" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="23" />
+        <state relative-caret-position="321">
+          <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+          <folding>
+            <element signature="e#820#889#0" />
+            <element signature="e#929#2165#0" />
+            <element signature="e#2194#3333#0" />
+            <element signature="e#3369#4453#0" />
+            <element signature="e#4515#4705#0" />
+            <element signature="e#4755#4947#0" />
+            <element signature="e#5012#5196#0" />
+            <element signature="e#5267#5453#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler_yahoostock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="167" column="158" selection-start-line="167" selection-start-column="158" selection-end-line="167" selection-end-column="158" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/franktest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="144" selection-start-line="144" selection-end-line="144" />
+        <state relative-caret-position="323">
+          <caret line="204" column="54" selection-start-line="204" selection-start-column="54" selection-end-line="204" selection-end-column="54" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/adapters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3105">
-          <caret line="513" selection-start-line="513" selection-end-line="513" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/twstock/stock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="73" column="91" selection-start-line="73" selection-start-column="91" selection-end-line="73" selection-end-column="91" />
         </state>
       </provider>
     </entry>

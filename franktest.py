@@ -68,6 +68,7 @@ Tradin_volume=[]
 Now_Tradin_volume= []
 Establishment_time=[]
 buy_sell_point=[]
+Buy_Sell_exceed=[]
 ######################## 年更新#############################################################
 # for item in twstock.stock_twse.keys(): #成立時間
 #     a= crawler_yahoostock.get_Establishment_time(item)
@@ -134,26 +135,19 @@ buy_sell_point=[]
 
 ######################## 日更新#############################################################
 
+# 20190724暫時註解
 ip_list =get_proxy_all()
 print(ip_list)
 i=0
 for item in Point_list:
     # stdout,process = subprocess.Popen("twstock -b {}".format(item), stdout=subprocess.PIPE, stderr=PIPE, stdin=subprocess.PIPE, shell=True).communicate()
     # print(stdout.decode('utf-8'))
-
     ip = ip_list[i%len(ip_list)]
-    stock = Stock(ip,item)
-
-    # if try_proxy(ip) :
-    #     pass
-    # else:
-    #     i=i+1
-    #     ip = ip_list[i % len(ip_list)]
 
     try:
+        stock = Stock(ip, item)
         bfp = BestFourPoint(stock)
         result = bfp.best_four_point()
-        # print(bfp.best_four_point())
 
         if result[1] == bfp.best_four_point_to_buy() :  # 判斷是否為四大買點
             print(item+',buy'+result[1])
@@ -165,12 +159,9 @@ for item in Point_list:
         # bfp.best_four_point_to_sell()  # 判斷是否為四大賣點
         # bfp.best_four_point()
 
-    except:
-        pass
+    except Exception as e:
+        print(e)
     i = i + 1
-    # bfp.__del__()
-
-    # buy_sell_point.append(stdout.decode('utf-8'))
 googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 
 
@@ -181,11 +172,19 @@ googlesheet_frank.The_Buy_Sell_Point_information().write(buy_sell_point)
 Ex_dividends_days = crawler_yahoostock.get_Ex_Dividends()
 googlesheet_frank.Ex_Dividends_information().write(Ex_dividends_days)
 
-Buy_Sell_exceed=crawler_yahoostock.get_Buy_Sell_exceed()
+# Buy_Sell_exceed=crawler_yahoostock.get_Buy_Sell_exceed()
 # print(Buy_Sell_exceed)
+# googlesheet_frank.Buy_Sell_exceed_information().write(Buy_Sell_exceed)
+
+for item in twstock.stock_twse.keys(): #買賣超 家數
+    try:
+        i = crawler_yahoostock.get_Buy_Sell_exceed(item)
+    except Exception as e:
+        print(e)
+        i = item
+    print(i)
+    Buy_Sell_exceed.append(i)
 googlesheet_frank.Buy_Sell_exceed_information().write(Buy_Sell_exceed)
-
-
 
 
 

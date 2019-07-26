@@ -137,41 +137,39 @@ def get_Ex_Dividends():
     resp = mafengwoSession.get("https://histock.tw/stock/dividend.aspx", verify=False, headers=header,
                                allow_redirects=False)
     Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
-
     for idx, tr in enumerate(Soup.find_all('tr')):
         tds = tr.find_all('td')
-        # print(tds)
         try:
            Result.append(tds[1].contents[0]+','+tds[0].contents[0]+','+tds[7].contents[0])
-           # print()
-            # return  tds[0].contents[0]
         except:
             pass
-    # print(ROE)
-    # print(Result)
     return Result
-def get_Buy_Sell_exceed():
+
+# def get_Buy_Sell_exceed():
+#     Result = []
+#     resp = mafengwoSession.get("https://stock.wearn.com/d50.asp", verify=False, headers=header,
+#                                allow_redirects=False)
+#     Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
+#     for idx, tr in enumerate(Soup.find_all('tr')):
+#         tds = tr.find_all('td')
+#         try:
+#            Result.append(str(int(tds[1].contents[0]))+'&'+str(int(tds[-1].contents[0])))
+#         except:
+#             pass
+#     return Result
+def get_Buy_Sell_exceed(stock_code):
     Result = []
-    resp = mafengwoSession.get("https://stock.wearn.com/d50.asp", verify=False, headers=header,
+    resp = mafengwoSession.get("https://www.wantgoo.com/stock/astock/agentstat2?stockno="+stock_code, verify=False, headers=header,
                                allow_redirects=False)
     Soup = BeautifulSoup(f"text = {resp.text}", 'lxml')
-
     for idx, tr in enumerate(Soup.find_all('tr')):
         tds = tr.find_all('td')
-        # print(tds)
+        if idx == 1:
+            return str(stock_code)+'&'+str(tds[1].contents[0]) + '&' + str(tds[2].contents[0]) + '&' + str(tds[3].contents[0]) + '&' + str(tds[4].contents[0])
+        elif idx > 1:
+            break
 
-        try:
-           # print(is_number(int(tds[1].contents[0])))
-           # print(tds[1].contents[0]+','+tds[-1].contents[0])
-           Result.append(str(int(tds[1].contents[0]))+'&'+str(int(tds[-1].contents[0])))
-            # return  tds[0].contents[0]
-        except:
-            pass
-    # print(ROE)
-    # print(Result)
     return Result
 if __name__=='__main__':
     a = get_Buy_Sell_exceed()
     print(a)
-    # print(a)
-    # print(a)
